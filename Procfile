@@ -1,2 +1,1 @@
-[phases.install]
-cmds = ["pip install -r requirements.txt"]
+web: python -m uvicorn main:app --host 0.0.0.0 --port $PORT
