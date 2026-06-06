@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from groq import Groq
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 import os
 import uuid
@@ -52,8 +53,7 @@ class SessionInfo(BaseModel):
 
 @app.get("/")
 def root():
-    return {"message": "Groq Chatbot API is running 🚀", "docs": "/docs"}
-
+    return FileResponse("index.html")
 
 @app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
